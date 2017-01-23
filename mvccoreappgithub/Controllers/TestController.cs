@@ -15,5 +15,13 @@ namespace mvccoreappgithub.Controllers
             return Content("Farshid Ahmadi");
         }
 
+        public IActionResult Index1(int id, string name)
+        {
+            ViewBag.id = id;
+            ViewBag.name = name;
+
+            return View();
+        }
+
     }
 }
