@@ -16,11 +16,22 @@ namespace mvccoreappgithub.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             ViewBag.Title = "Index";
             var result = _context.People.ToList();
             return (View(result));
         }
+
+        [HttpGet]
+        public virtual ActionResult InsertIndex()
+        {
+            return (View());
+        }
+
+
+
+
     }
 }

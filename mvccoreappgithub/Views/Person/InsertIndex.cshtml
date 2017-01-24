@@ -1,0 +1,36 @@
+﻿@using Infrastructure
+@model mvccoreappgithub.Models.Person
+@{
+    ViewData["Title"] = "InsertIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div>
+        @Html.Label("lblID", "ID")
+        @Html.EditorFor(e => Model.ID)
+        @Html.ValidationMessageFor(x => Model.ID)
+
+        @Html.DisplayNameFor(e => Model.JID)
+        @Html.EditorFor(e => Model.JID)
+        @Html.ValidationMessageFor(x => Model.JID)
+
+        @Html.DisplayNameFor(e => Model.Name)
+        @Html.TextBoxFor(e => Model.Name)
+        @Html.ValidationMessageFor(x => Model.Name)
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        @Html.LabelFor(e => Model.Specification, new { @class = "lbl1 lbl2" })
+        @Html.DisplayFor(e => Model.Specification)
+    </div>
+
+        @*<input id="btnsubmit" type="submit" value="ارسال" />*@
+        @Html.Button_Submit("btnsubmit", "ارسال")
+
+        @Html.ActionLink("Index", "Index")
+
+}
