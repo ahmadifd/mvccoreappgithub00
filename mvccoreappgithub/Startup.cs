@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using mvccoreappgithub.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace mvccoreappgithub
 {
@@ -27,6 +29,8 @@ namespace mvccoreappgithub
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             // Add framework services.
             services.AddMvc();
         }
@@ -53,7 +57,7 @@ namespace mvccoreappgithub
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Test}/{action=Index}/{id?}");
+                    template: "{controller=Person}/{action=Index}/{id?}");
             });
         }
     }
