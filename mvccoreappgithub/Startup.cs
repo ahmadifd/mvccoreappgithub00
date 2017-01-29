@@ -55,6 +55,8 @@ namespace mvccoreappgithub
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute("areaRoute", "{area:exists}/{controller=Home1Controller}/{action=Index1}/{id?}");
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Person}/{action=Index}/{id?}");

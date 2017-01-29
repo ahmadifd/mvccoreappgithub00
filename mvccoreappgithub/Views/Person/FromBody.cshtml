@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FromBody</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+
+
+            @Html.TextBox("firstname", "")
+            @Html.TextBox("lastname", "")
+
+
+            <input id="btnsubmit" type="submit" value="ارسال" />
+
+        }
+
+
+
+
+    </div>
+</body>
+</html>

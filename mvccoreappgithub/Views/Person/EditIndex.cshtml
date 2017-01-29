@@ -1,0 +1,43 @@
+﻿@model mvccoreappgithub.Models.Person
+@{
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+    ViewBag.Title = "EditIndex";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div>
+        <table>
+            <tr>
+                <td>
+                    @Html.HiddenFor(x => Model.ID)
+                    @Html.HiddenFor(x => Model.JID)
+
+                </td>
+                <td>
+                    @Html.DisplayNameFor(x => Model.Name)
+                    @Html.EditorFor(x=> Model.Name)
+                    @Html.ValidationMessageFor(x=> Model.Name)
+
+                </td>
+                <td>
+                    @Html.DisplayNameFor(x => Model.Specification)
+                    @Html.DisplayFor(x => Model.Specification)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="btnsubmit" type="submit" value="ارسال" />
+
+                </td>
+                <td>
+                    @Html.ActionLink("Index","Index")
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+

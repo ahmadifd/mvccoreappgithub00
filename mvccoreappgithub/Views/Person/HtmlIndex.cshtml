@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HtmlIndex</title>
+</head>
+<body>
+    <form method="post" action="HtmlIndex"  >
+        <label id="lblfirstname" for="firstname" ></label>
+        @Html.TextBox("firstname", "")
+        @*<input id="firstname" name="firstname" type="text" />*@
+        <label id="lbllastname" for="lastname"></label>
+        <input id="lastname" name="lastname" type="text" />
+
+        <input id="btnsubmit" type="submit" value="ارسال" />
+
+    </form>
+</body>
+</html>

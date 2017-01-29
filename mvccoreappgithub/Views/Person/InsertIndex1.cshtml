@@ -1,0 +1,34 @@
+﻿@model mvccoreappgithub.Models.Person
+@{
+    ViewBag.Title = "InsertIndex1";
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+}
+
+<h2>InsertIndex1</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(excludePropertyErrors:false)
+    <div>
+        <table>
+            <tr>
+                <td>
+                    @Html.EditorForModel()
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="btnsubmit" type="submit" value="ارسال" />
+
+                </td>
+                <td>
+                    @Html.ActionLink("Index", "Index")
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+
