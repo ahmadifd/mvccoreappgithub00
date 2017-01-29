@@ -17,10 +17,13 @@
     {
         @Html.Partial("_PartialIndex", p)
         @*@Html.ActionLink("EditIndex", MVC.Home.EditIndex(p.ID, p.JID))*@
-        <b>||</b>
+        @*<b>||</b>*@
             @Html.ActionLink("EditIndex", "EditIndex", routeValues: new { ID = p.ID, JID = p.JID });
         <b>||</b>
             @Html.ActionLink("EditIndex1", "EditIndex1", routeValues: new { ID = p.ID, JID = p.JID });
+        <b>||</b>
+        <a asp-action="EditIndex2" asp-route-id="@p.ID" asp-route-JID="@p.JID" >EditIndex2</a>
+
         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             @Html.ActionLink("DeleteIndex", "DeleteIndex", p)
     }
@@ -32,9 +35,12 @@
     @Html.ActionLink("InsertIndex", "InsertIndex")
     <b>||</b>
     @Html.ActionLink("InsertIndex1", "InsertIndex1")
+    <b>||</b>
+    <a asp-action="InsertIndex1" asp-route-id="">InsertIndex1</a>
     <hr />
     @Html.ActionLink("AdministratorIndex", "Index1", "Home1", routeValues: new { Area = "Administrator", ID = 666, JID = 667 }, htmlAttributes: null)
     @*@Html.ActionLink("AdministratorIndex", MVC.Administrator.Home1.Index1())*@
+
 
     <div>
 

@@ -20,27 +20,27 @@ namespace mvccoreappgithub.Controllers
 
         ////////////////////////////////////Index
         [HttpGet]
-        public virtual ActionResult Index()
+        public async Task<IActionResult> Index()
         {
             ViewBag.Title = "Index";
-            var result = _context.People.ToList();
+            var result = await _context.People.ToListAsync();
             return (View(result));
         }
         [HttpPost]
-        public virtual ActionResult Index(mvccoreappgithub.Models.Person p)
+        public virtual IActionResult Index(mvccoreappgithub.Models.Person p)
         {
             return (View(p));
         }
 
         ////////////////////////////////////InsertIndex
         [HttpGet]
-        public virtual ActionResult InsertIndex()
+        public virtual IActionResult InsertIndex()
         {
             return (View());
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult InsertIndex([Bind(include:"ID,JID,Name" )]mvccoreappgithub.Models.Person p)
+        public virtual IActionResult InsertIndex([Bind(include: "ID,JID,Name")]mvccoreappgithub.Models.Person p)
         {
             if (ModelState.IsValid)
             {
@@ -54,13 +54,13 @@ namespace mvccoreappgithub.Controllers
 
         ////////////////////////////////////EditIndex
         [HttpGet]
-        public virtual ActionResult EditIndex(int? Id, int? JId)
+        public async Task<IActionResult> EditIndex(int? Id, int? JId)
         {
             if (!Id.HasValue || !JId.HasValue)
             {
                 return BadRequest();
             }
-            mvccoreappgithub.Models.Person ep = _context.People.FirstOrDefault(e => e.ID == Id && e.JID == JId);
+            mvccoreappgithub.Models.Person ep =await _context.People.FirstOrDefaultAsync(e => e.ID == Id && e.JID == JId);
             if (ep == null)
             {
                 return NotFound();
@@ -68,11 +68,12 @@ namespace mvccoreappgithub.Controllers
             return (View(ep));
         }
         [HttpPost]
-        public virtual ActionResult EditIndex(mvccoreappgithub.Models.Person p)
+        public virtual IActionResult EditIndex(mvccoreappgithub.Models.Person p)
         {
             if (ModelState.IsValid)
             {
-                _context.Entry(p).State = EntityState.Modified;
+                //_context.Entry(p).State = EntityState.Modified;
+                _context.Update(p);
                 //mvccoreappgithub.Models.Person ep = _context.People.FirstOrDefault(e => e.ID == p.ID);
                 //ep.Name = p.Name;
                 _context.SaveChanges();
@@ -83,7 +84,7 @@ namespace mvccoreappgithub.Controllers
 
 
         ////////////////////////////////////DeleteIndex
-        public virtual ActionResult DeleteIndex(mvccoreappgithub.Models.Person p)
+        public virtual IActionResult DeleteIndex(mvccoreappgithub.Models.Person p)
         {
 
             _context.Entry(p).State = EntityState.Deleted;
@@ -95,12 +96,12 @@ namespace mvccoreappgithub.Controllers
 
         ////////////////////////////////////HtmlIndex
         [HttpGet]
-        public virtual ActionResult HtmlIndex()
+        public virtual IActionResult HtmlIndex()
         {
             return View();
         }
         [HttpPost]
-        public virtual ActionResult HtmlIndex(string firstname, string lastname)
+        public virtual IActionResult HtmlIndex(string firstname, string lastname)
         {
             return View();
         }
@@ -108,13 +109,13 @@ namespace mvccoreappgithub.Controllers
         ////////////////////////////////////FromBody
 
         [HttpGet]
-        public virtual ActionResult FromBody()
+        public virtual IActionResult FromBody()
         {
             return View();
         }
 
         [HttpPost]
-        public virtual ActionResult FromBody(Person p)
+        public virtual IActionResult FromBody(Person p)
         {
             return View();
         }
@@ -122,7 +123,7 @@ namespace mvccoreappgithub.Controllers
 
         ////////////////////////////////////EditIndex1
         [HttpGet]
-        public virtual ActionResult EditIndex1(int? Id, int? JId)
+        public virtual IActionResult EditIndex1(int? Id, int? JId)
         {
             if (!Id.HasValue || !JId.HasValue)
             {
@@ -136,7 +137,7 @@ namespace mvccoreappgithub.Controllers
             return (View(ep));
         }
         [HttpPost]
-        public virtual ActionResult EditIndex1(mvccoreappgithub.Models.Person p)
+        public virtual IActionResult EditIndex1(mvccoreappgithub.Models.Person p)
         {
             if (ModelState.IsValid)
             {
@@ -151,13 +152,13 @@ namespace mvccoreappgithub.Controllers
 
         ////////////////////////////////////InsertIndex1
         [HttpGet]
-        public virtual ActionResult InsertIndex1()
+        public virtual IActionResult InsertIndex1()
         {
             return (View());
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult InsertIndex1(mvccoreappgithub.Models.Person p)
+        public virtual IActionResult InsertIndex1(mvccoreappgithub.Models.Person p)
         {
             if (ModelState.IsValid)
             {
@@ -169,12 +170,40 @@ namespace mvccoreappgithub.Controllers
 
         }
 
+        ////////////////////////////////////EditIndex1
+        [HttpGet]
+        public virtual IActionResult EditIndex2(int? Id, int? JId)
+        {
+            if (!Id.HasValue || !JId.HasValue)
+            {
+                return BadRequest();
+            }
+            mvccoreappgithub.Models.Person ep = _context.People.FirstOrDefault(e => e.ID == Id && e.JID == JId);
+            if (ep == null)
+            {
+                return NotFound();
+            }
+            return (View(ep));
+        }
+        [HttpPost]
+        public virtual IActionResult EditIndex2(mvccoreappgithub.Models.Person p)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Entry(p).State = EntityState.Modified;
+                //mvccoreappgithub.Models.Person ep = _context.People.FirstOrDefault(e => e.ID == p.ID);
+                //ep.Name = p.Name;
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return (View(p));
+        }
 
 
 
 
 
-        public ActionResult CheckUserName(string UserName)
+        public IActionResult CheckUserName(string UserName)
         {
             var result = _context.People.FirstOrDefault(r => r.UserName == UserName);
 

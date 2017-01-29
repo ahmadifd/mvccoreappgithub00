@@ -1,0 +1,50 @@
+﻿@model mvccoreappgithub.Models.Person
+@{
+    Layout = "~/Views/Shared/_LayoutView.cshtml";
+    ViewBag.Title = "EditIndex";
+}
+
+
+<form asp-action="EditIndex2">
+    @Html.AntiForgeryToken()
+    @*@Html.ValidationSummary(true)*@
+    <div asp-validation-summary="ModelOnly" ></div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <input type="hidden" asp-for="@Model.ID" />
+                    @*@Html.HiddenFor(x => Model.ID)*@
+                    @Html.HiddenFor(x => Model.JID)
+
+                </td>
+                <td>
+                    <label asp-for="@Model.Name" ></label>
+                    <input asp-for="@Model.Name" type="text" />
+                    <span asp-validation-for="@Model.Name" ></span>
+                    @*@Html.DisplayNameFor(x => Model.Name)*@
+                    @*@Html.EditorFor(x => Model.Name)*@
+                    @*@Html.ValidationMessageFor(x => Model.Name)*@
+
+                </td>
+                <td>
+                    @Html.DisplayNameFor(x => Model.Specification)
+                    @Html.DisplayFor(x => Model.Specification)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input id="btnsubmit" type="submit" value="ارسال" />
+
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</form>
+
+
+@Html.ActionLink("Index", "Index")
+<b>||</b>
+<a asp-action="Index">Index</a>
+

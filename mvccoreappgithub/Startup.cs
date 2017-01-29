@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using mvccoreappgithub.Data;
 using Microsoft.EntityFrameworkCore;
+using mvccoreappgithub.Models;
 
 namespace mvccoreappgithub
 {
@@ -61,6 +62,8 @@ namespace mvccoreappgithub
                     name: "default",
                     template: "{controller=Person}/{action=Index}/{id?}");
             });
+
+            SeedData.Initialize(app.ApplicationServices);
         }
     }
 }
