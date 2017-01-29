@@ -2,37 +2,47 @@
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Index</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
 
-<table class="table">
 
-    @foreach (var item in Model)
+
+    @foreach (mvccoreappgithub.Models.Person p in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayNameFor(modelItem => item.ID)
-                @Html.DisplayFor(modelItem => item.ID)
-                @Html.DisplayNameFor(modelItem => item.Name)
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("IndexEdit", "IndexEdit", new { ID = item.ID })
-                @*<a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
-            </td>
-        </tr>
+        @Html.Partial("_PartialIndex", p)
+        @*@Html.ActionLink("EditIndex", MVC.Home.EditIndex(p.ID, p.JID))*@
+        <b>||</b>
+            @Html.ActionLink("EditIndex", "EditIndex", routeValues: new { ID = p.ID, JID = p.JID });
+        <b>||</b>
+            @Html.ActionLink("EditIndex1", "EditIndex1", routeValues: new { ID = p.ID, JID = p.JID });
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            @Html.ActionLink("DeleteIndex", "DeleteIndex", p)
     }
 
-    <tr>
-        <td colspan="2">
 
-            @Html.ActionLink("InsertIndex", "InsertIndex")
+    <br />
+    <br />
 
-        </td>
-    </tr>
+    @Html.ActionLink("InsertIndex", "InsertIndex")
+    <b>||</b>
+    @Html.ActionLink("InsertIndex1", "InsertIndex1")
+    <hr />
+    @Html.ActionLink("AdministratorIndex", "Index1", "Home1", routeValues: new { Area = "Administrator", ID = 666, JID = 667 }, htmlAttributes: null)
+    @*@Html.ActionLink("AdministratorIndex", MVC.Administrator.Home1.Index1())*@
 
-</table>
+    <div>
+
+
+
+
+
+
+    </div>
+</body>
+</html>
