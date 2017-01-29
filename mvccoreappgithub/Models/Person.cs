@@ -47,7 +47,7 @@ namespace mvccoreappgithub.Models
 
         [System.ComponentModel.DataAnnotations.DataType(System.ComponentModel.DataAnnotations.DataType.EmailAddress)]
         //[System.ComponentModel.DataAnnotations.RegularExpression(pattern: @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
-        //  , ErrorMessageResourceType = typeof(Resources.mvc00Resource), ErrorMessageResourceName = "Email")]
+        //  , ErrorMessageResourceType = typeof(Resources.mvccoreappgithubResource), ErrorMessageResourceName = "Email")]
         [System.ComponentModel.DataAnnotations.Display(ResourceType = typeof(App_GlobalResources.Captions), Name = "Email", Order = 10002)]
         public string Email { get; set; }
 

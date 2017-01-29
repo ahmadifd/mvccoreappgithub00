@@ -22,13 +22,13 @@ namespace mvccoreappgithub.App_GlobalResources {
     // with the /str option, or rebuild your VS project.
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class mvc00Resource {
+    public class mvccoreappgithubResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
-        internal mvc00Resource() {
+        internal mvccoreappgithubResource() {
         }
         
         /// <summary>
@@ -38,7 +38,7 @@ namespace mvccoreappgithub.App_GlobalResources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("mvccoreappgithub.App_GlobalResources.mvc00Resource", typeof(mvc00Resource).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("mvccoreappgithub.App_GlobalResources.mvccoreappgithubResource", typeof(mvccoreappgithubResource).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

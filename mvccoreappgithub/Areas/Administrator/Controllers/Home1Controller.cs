@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace mvc00.Areas.Administrator.Controllers
+namespace mvccoreappgithub.Areas.Administrator.Controllers
 {
 
 
