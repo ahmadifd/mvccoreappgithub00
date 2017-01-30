@@ -172,8 +172,9 @@ namespace mvccoreappgithub.Controllers
 
         ////////////////////////////////////EditIndex1
         [HttpGet]
-        public virtual IActionResult EditIndex2(int? Id, int? JId)
+        public virtual IActionResult EditIndex2(int? Id, int? JId )
         {
+            ViewBag.returnUrl = "InsertIndex1";
             if (!Id.HasValue || !JId.HasValue)
             {
                 return BadRequest();
@@ -186,7 +187,7 @@ namespace mvccoreappgithub.Controllers
             return (View(ep));
         }
         [HttpPost]
-        public virtual IActionResult EditIndex2(mvccoreappgithub.Models.Person p)
+        public virtual IActionResult EditIndex2(mvccoreappgithub.Models.Person p, string returnUrl = null)
         {
             if (ModelState.IsValid)
             {

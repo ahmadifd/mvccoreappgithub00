@@ -15,7 +15,7 @@
 
     @foreach (mvccoreappgithub.Models.Person p in Model)
     {
-        @Html.Partial("_PartialIndex", p)
+        @Html.Partial("_PartialIndex", p)<b>||</b>await Html.RenderPartialAsync("_PartialIndex", p); 
         @*@Html.ActionLink("EditIndex", MVC.Home.EditIndex(p.ID, p.JID))*@
         @*<b>||</b>*@
             @Html.ActionLink("EditIndex", "EditIndex", routeValues: new { ID = p.ID, JID = p.JID });

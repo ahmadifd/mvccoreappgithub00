@@ -5,10 +5,10 @@
 }
 
 
-<form asp-action="EditIndex2">
+<form asp-controller="Person" asp-action="EditIndex2" method="post" asp-route-returnurl="@ViewBag.returnUrl">
     @Html.AntiForgeryToken()
     @*@Html.ValidationSummary(true)*@
-    <div asp-validation-summary="ModelOnly" ></div>
+    <div asp-validation-summary="All" ></div>
     <div>
         <table>
             <tr>
@@ -28,8 +28,8 @@
 
                 </td>
                 <td>
-                    @Html.DisplayNameFor(x => Model.Specification)
-                    @Html.DisplayFor(x => Model.Specification)
+                    @Html.DisplayNameFor(x => Model.UserName)
+                    @Html.EditorFor(x => Model.UserName)
                 </td>
             </tr>
             <tr>
